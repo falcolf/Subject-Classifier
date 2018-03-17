@@ -1,17 +1,17 @@
 from flask import Flask, abort, jsonify, request
-import pickle
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 nltk.download('stopwords')
-with open('cv.pkl', 'rb') as fid:
-	cv = CountVectorizer()
-	cv= pickle.load(fid)
-with open('classifier.pkl', 'rb') as fid:
-	classifier = RandomForestClassifier(random_state=0)
-	classifier= pickle.load(fid)
+from sklearn.eternals import joblib
+from sklearn.naive_bayes import MultinomialNB
+cv = CountVectorizer()
+cv = joblib.load('cv2.joblib.pkl')
+classifier = MultinomialNB()
+classifier = joblib.load('newclassifier.joblib.pkl')
+
 app = Flask(__name__)
 
 @app.route('/')
