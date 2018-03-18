@@ -8,9 +8,9 @@ nltk.download('stopwords')
 from sklearn.eternals import joblib
 from sklearn.naive_bayes import MultinomialNB
 cv = CountVectorizer()
-cv = joblib.load('cv2.joblib.pkl')
+cv = joblib.load('cv.joblib.pkl')
 classifier = MultinomialNB()
-classifier = joblib.load('newclassifier.joblib.pkl')
+classifier = joblib.load('classifier.joblib.pkl')
 
 app = Flask(__name__)
 
